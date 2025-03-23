@@ -1,5 +1,5 @@
 from pydantic import Field, field_validator
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import ClassVar, Optional
 from enum import Enum
 from reclaim_sdk.resources.base import BaseResource
@@ -162,7 +162,11 @@ class Task(BaseResource):
     def log_work(self, minutes: int, end: Optional[datetime] = None) -> None:
         params = {"minutes": minutes}
         if end:
-            params["end"] = end.isoformat()
+            # Convert local time to Zulu time
+            end = end.astimezone(timezone.utc)
+            # Truncate timestamp to match required format
+            params["end"] = end.isoformat()[:-9] + "Z"
+
         response = self._client.post(
             f"/api/planner/log-work/task/{self.id}", params=params
         )

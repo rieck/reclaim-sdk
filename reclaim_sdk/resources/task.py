@@ -152,7 +152,7 @@ class Task(BaseResource):
             # Convert local time to Zulu time
             end = end.astimezone(timezone.utc)
             # Truncate timestamp to match required format
-            params["end"] = end.isoformat()[:-9] + "Z"
+            params["end"] = end.isoformat(timespec='seconds')[:-6] + ".000Z"
 
         response = self._client.post(
             f"/api/planner/log-work/task/{self.id}", params=params

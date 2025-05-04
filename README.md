@@ -1,9 +1,13 @@
-# reclaim-sdk - Python SDK for Reclaim.ai
+# reclaim-sdk-fixed - Unofficial fixed Python SDK for Reclaim.ai
 
-⚠️ **WARNING: Major Changes in Version 0.5+** ⚠️
+## Fixed version
+This is a temporary fixed version of the unofficial Reclaim.ai Python SDK. The original project appears to be unmaintained, and some critical issues have emerged. This version addresses these issues while maintaining compatibility with the current Reclaim.ai API. Once the original project resumes maintenance, this package will be deprecated in favor of the official SDK.
 
-The codebase has undergone substantial modifications starting from version 0.5. These updates introduce breaking changes that may impact existing implementations. Please consult the documentation thoroughly before upgrading from earlier versions.
+The main fixes include:
+- Added further fields to Task [#8](https://github.com/labiso-gmbh/reclaim-sdk/pull/8)
+- Fixed incorrect time format in log_work [#9](ttps://github.com/labiso-gmbh/reclaim-sdk/pull/9)
 
+## Python SDK
 reclaim-sdk is a Python SDK designed for the Reclaim.ai API. It offers a straightforward and developer-friendly interface for managing tasks within Reclaim.ai. Please note that this SDK is not officially affiliated with Reclaim.ai and has been reverse-engineered from the Reclaim.ai web app, as well as utilizing the Swagger Spec provided by AJ from Reclaim.ai =>[Swagger Spec](https://api.app.reclaim.ai/swagger/reclaim-api-0.1.yml). Consequently, there may be bugs, and the API is subject to change without notice. Version stability is not guaranteed.
 
 ## Features
@@ -14,7 +18,7 @@ At present, reclaim-sdk exclusively supports task management. Its primary functi
 ## Installation
 To install reclaim-sdk, simply run the following command:
 ```bash
-pip install reclaim-sdk
+pip install reclaim-sdk-fixed
 ```
 
 ## Configuration

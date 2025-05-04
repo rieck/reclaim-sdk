@@ -39,7 +39,7 @@ setup(
     description="Temporary fixed version of the unofficial Reclaim.ai Python SDK with critical bug fixes",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/rieck/reclaim-sdk#fixed",
+    url="https://github.com/rieck/reclaim-sdk/tree/fixed",
     author="Konrad Rieck",
     author_email="konrad@mlsec.org",
     license="MIT",
@@ -62,6 +62,6 @@ setup(
     entry_points={},
     project_urls={
         "Bug Reports": "https://github.com/rieck/reclaim-sdk/issues",
-        "Source": "https://github.com/rieck/reclaim-sdk#fixed",
+        "Source": "https://github.com/rieck/reclaim-sdk/tree/fixed",
     },
 )

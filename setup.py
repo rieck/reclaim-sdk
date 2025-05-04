@@ -9,9 +9,20 @@ HERE = Path(__file__).parent
 README = (HERE / "README.md").read_text()
 
 # Load the requirements from the requirements.txt file
-with open(HERE / "requirements.txt", "r") as f:
-    REQUIREMENTS = f.read().splitlines()
+#with open(HERE / "requirements.txt", "r") as f:
+#    REQUIREMENTS = f.read().splitlines()
 
+# Hack due to conflicting package names
+REQUIREMENTS = [
+    "httpx[http2]",
+    "python-dateutil",
+    "pydantic>=2.0.0",
+]
+
+# Add incompatible package specifications
+INCOMPATIBLE_REQUIREMENTS = [
+    "reclaim-sdk!=0.0.0",  # Incompatible with original version obviously
+]
 
 # Automatically extract the version from the package's __init__.py file
 def get_version():
@@ -23,14 +34,14 @@ def get_version():
 
 
 setup(
-    name="reclaim-sdk",
+    name="reclaim-sdk-fixed",
     version=get_version(),
-    description="Unofficial Reclaim.ai Python API",
+    description="Temporary fixed version of the unofficial Reclaim.ai Python SDK with critical bug fixes",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/llabusch93/reclaim-sdk",
-    author="Laurence Lars Labusch",
-    author_email="lala@labiso.de",
+    url="https://github.com/rieck/reclaim-sdk#fixed",
+    author="Konrad Rieck",
+    author_email="konrad@mlsec.org",
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
@@ -43,14 +54,18 @@ setup(
     ],
     packages=find_packages(exclude=("tests",)),
     include_package_data=True,
-    install_requires=REQUIREMENTS,
+    install_requires=[
+        "httpx[http2]",
+        "python-dateutil",
+        "pydantic>=2.0.0",
+    ] + INCOMPATIBLE_REQUIREMENTS,
     extras_require={
         "dev": ["flake8", "black"],
     },
     python_requires=">=3.7",
     entry_points={},
     project_urls={
-        "Bug Reports": "https://github.com/llabusch93/reclaim-sdk/issues",
-        "Source": "https://github.com/llabusch93/reclaim-sdk",
+        "Bug Reports": "https://github.com/rieck/reclaim-sdk/issues",
+        "Source": "https://github.com/rieck/reclaim-sdk#fixed",
     },
 )

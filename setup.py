@@ -54,11 +54,7 @@ setup(
     ],
     packages=find_packages(exclude=("tests",)),
     include_package_data=True,
-    install_requires=[
-        "httpx[http2]",
-        "python-dateutil",
-        "pydantic>=2.0.0",
-    ] + INCOMPATIBLE_REQUIREMENTS,
+    install_requires=REQUIREMENTS + INCOMPATIBLE_REQUIREMENTS,
     extras_require={
         "dev": ["flake8", "black"],
     },
